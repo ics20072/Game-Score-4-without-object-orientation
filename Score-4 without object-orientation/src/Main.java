@@ -2,26 +2,27 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
-
+        
+	//The comments are in Greek language
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
 		Scanner keyboard = new Scanner(System.in);
 		
-		//Δηλωση Μεταβλητων
+		//Γ„Γ§Γ«ΓΉΓ³Γ§ ΓΓ¥Γ΄Γ΅ΓΆΓ«Γ§Γ΄ΓΉΓ­
 		String player_1, player_2;
 		char chip_player_1, chip_player_2;
 		int rows, columns,i;
 		
 		System.out.println("This is score4");
 		
-		//Εισαγωγη ονοματων παικτων
+		//Γ…Γ©Γ³Γ΅Γ£ΓΉΓ£Γ§ Γ―Γ­Γ―Γ¬Γ΅Γ΄ΓΉΓ­ Γ°Γ΅Γ©ΓªΓ΄ΓΉΓ­
 		System.out.print("Please enter the name of the 1st player: ");
 		player_1 = keyboard.nextLine();
 		System.out.print("Please enter the name of the 2nd player: ");
 		player_2 = keyboard.nextLine();
 		
-		//Εισαγωγη μαρκα του παιχτη (ή ο ή χ)
+		//Γ…Γ©Γ³Γ΅Γ£ΓΉΓ£Γ§ Γ¬Γ΅Γ±ΓªΓ΅ Γ΄Γ―Γµ Γ°Γ΅Γ©Γ·Γ΄Γ§ (Γ Γ― Γ Γ·)
 		do {
 		System.out.print(player_1 +", please select your chip(o or x): ");
 		chip_player_1 = keyboard.next().charAt(0);
@@ -32,7 +33,7 @@ public class Main {
 			chip_player_2 = 'x';
 		System.out.println(player_2+ ", your chip is: " +chip_player_2);
 		
-		//Εισαγωγή διαστάσεων παιχνιδιού και ελεγχος για εγκυρες τιμες
+		//Γ…Γ©Γ³Γ΅Γ£ΓΉΓ£Γ Γ¤Γ©Γ΅Γ³Γ΄ΓΓ³Γ¥ΓΉΓ­ Γ°Γ΅Γ©Γ·Γ­Γ©Γ¤Γ©Γ―Γ½ ΓªΓ΅Γ© Γ¥Γ«Γ¥Γ£Γ·Γ―Γ² Γ£Γ©Γ΅ Γ¥Γ£ΓªΓµΓ±Γ¥Γ² Γ΄Γ©Γ¬Γ¥Γ²
 		do {
 			System.out.print("Please, enter the number of rows(4-15): ");
 			rows = keyboard.nextInt();
@@ -47,72 +48,72 @@ public class Main {
 		}while(columns<4 || columns>15);
 		
 		
-		//Δημιουργια κενου παιχνιδιου
-		char [][] Game = new char[rows][columns]; //Δηλωση Πινακα
+		//Γ„Γ§Γ¬Γ©Γ―ΓµΓ±Γ£Γ©Γ΅ ΓªΓ¥Γ­Γ―Γµ Γ°Γ΅Γ©Γ·Γ­Γ©Γ¤Γ©Γ―Γµ
+		char [][] Game = new char[rows][columns]; //Γ„Γ§Γ«ΓΉΓ³Γ§ ΓΓ©Γ­Γ΅ΓªΓ΅
 		
-		CreateGame.Game(Game, rows, columns); //Κληση μεθοδου για γεμισμα του πινακα με "-"
+		CreateGame.Game(Game, rows, columns); //ΓΓ«Γ§Γ³Γ§ Γ¬Γ¥Γ¨Γ―Γ¤Γ―Γµ Γ£Γ©Γ΅ Γ£Γ¥Γ¬Γ©Γ³Γ¬Γ΅ Γ΄Γ―Γµ Γ°Γ©Γ­Γ΅ΓªΓ΅ Γ¬Γ¥ "-"
 		
-		//Εμφανιση Παιχνιδιου
-		PrintGame.Print_Game(Game, rows, columns); //Εμφανιση αρχικου παιχνιδιου γεματο με "-"
+		//Γ…Γ¬Γ¶Γ΅Γ­Γ©Γ³Γ§ ΓΓ΅Γ©Γ·Γ­Γ©Γ¤Γ©Γ―Γµ
+		PrintGame.Print_Game(Game, rows, columns); //Γ…Γ¬Γ¶Γ΅Γ­Γ©Γ³Γ§ Γ΅Γ±Γ·Γ©ΓªΓ―Γµ Γ°Γ΅Γ©Γ·Γ­Γ©Γ¤Γ©Γ―Γµ Γ£Γ¥Γ¬Γ΅Γ΄Γ― Γ¬Γ¥ "-"
 		
 		Random ra = new Random();
 		
-		int ran_number = ra.nextInt(); //Τυχαια Επιλογη παιχτη για να ξεκινησει το παιχνδι
-		int next_player = 0, column; //Η μεταβλητη next_player βοηθα στην εναλλαγη του παιχτη
-		boolean stop=false; //Μεταβλητη για ελεγχο νικητη ή ισοπαλλιας
-		int [] full_columns = new int [columns]; //Δημιουργια πινακα με την αδεια θεση απο καθε στυλη
+		int ran_number = ra.nextInt(); //Γ”ΓµΓ·Γ΅Γ©Γ΅ Γ…Γ°Γ©Γ«Γ―Γ£Γ§ Γ°Γ΅Γ©Γ·Γ΄Γ§ Γ£Γ©Γ΅ Γ­Γ΅ Γ®Γ¥ΓªΓ©Γ­Γ§Γ³Γ¥Γ© Γ΄Γ― Γ°Γ΅Γ©Γ·Γ­Γ¤Γ©
+		int next_player = 0, column; //Γ‡ Γ¬Γ¥Γ΄Γ΅ΓΆΓ«Γ§Γ΄Γ§ next_player ΓΆΓ―Γ§Γ¨Γ΅ Γ³Γ΄Γ§Γ­ Γ¥Γ­Γ΅Γ«Γ«Γ΅Γ£Γ§ Γ΄Γ―Γµ Γ°Γ΅Γ©Γ·Γ΄Γ§
+		boolean stop=false; //ΓΓ¥Γ΄Γ΅ΓΆΓ«Γ§Γ΄Γ§ Γ£Γ©Γ΅ Γ¥Γ«Γ¥Γ£Γ·Γ― Γ­Γ©ΓªΓ§Γ΄Γ§ Γ Γ©Γ³Γ―Γ°Γ΅Γ«Γ«Γ©Γ΅Γ²
+		int [] full_columns = new int [columns]; //Γ„Γ§Γ¬Γ©Γ―ΓµΓ±Γ£Γ©Γ΅ Γ°Γ©Γ­Γ΅ΓªΓ΅ Γ¬Γ¥ Γ΄Γ§Γ­ Γ΅Γ¤Γ¥Γ©Γ΅ Γ¨Γ¥Γ³Γ§ Γ΅Γ°Γ― ΓªΓ΅Γ¨Γ¥ Γ³Γ΄ΓµΓ«Γ§
 		
 		for (i=0;i<columns;i++)
-			full_columns[i] = rows-1; //Ως πρωτη αδεια θεση σε καθε στυλη, η τελευταια γραμμη
+			full_columns[i] = rows-1; //Γ™Γ² Γ°Γ±ΓΉΓ΄Γ§ Γ΅Γ¤Γ¥Γ©Γ΅ Γ¨Γ¥Γ³Γ§ Γ³Γ¥ ΓªΓ΅Γ¨Γ¥ Γ³Γ΄ΓµΓ«Γ§, Γ§ Γ΄Γ¥Γ«Γ¥ΓµΓ΄Γ΅Γ©Γ΅ Γ£Γ±Γ΅Γ¬Γ¬Γ§
 		
 		
 		
-		//Ξεκινημα παιχνιδιου με τυχαια επιλογη παιχτη και πρωτη επιλογη στυλης
+		//ΓΓ¥ΓªΓ©Γ­Γ§Γ¬Γ΅ Γ°Γ΅Γ©Γ·Γ­Γ©Γ¤Γ©Γ―Γµ Γ¬Γ¥ Γ΄ΓµΓ·Γ΅Γ©Γ΅ Γ¥Γ°Γ©Γ«Γ―Γ£Γ§ Γ°Γ΅Γ©Γ·Γ΄Γ§ ΓªΓ΅Γ© Γ°Γ±ΓΉΓ΄Γ§ Γ¥Γ°Γ©Γ«Γ―Γ£Γ§ Γ³Γ΄ΓµΓ«Γ§Γ²
 		if (ran_number%2==0)  
 		{
 			do {
 			System.out.print(player_1+ "(" +chip_player_1+ ") , your turn. Select column: ");
 			next_player = 0;
-			column = keyboard.nextInt(); //Επιλογη στυλης
-			}while(column<1 || column>columns || full_columns[column-1]<0); //Ελεγχος για σωστη επιλογη θεσης
-			Game[full_columns[column-1]][column-1] = chip_player_1; //Εισαγωγη Μαρκας
-			full_columns[column-1] = full_columns[column-1]-1; //Επομενη αδεια θεση στην στυλη που επιλεχτηκε
+			column = keyboard.nextInt(); //Γ…Γ°Γ©Γ«Γ―Γ£Γ§ Γ³Γ΄ΓµΓ«Γ§Γ²
+			}while(column<1 || column>columns || full_columns[column-1]<0); //Γ…Γ«Γ¥Γ£Γ·Γ―Γ² Γ£Γ©Γ΅ Γ³ΓΉΓ³Γ΄Γ§ Γ¥Γ°Γ©Γ«Γ―Γ£Γ§ Γ¨Γ¥Γ³Γ§Γ²
+			Game[full_columns[column-1]][column-1] = chip_player_1; //Γ…Γ©Γ³Γ΅Γ£ΓΉΓ£Γ§ ΓΓ΅Γ±ΓªΓ΅Γ²
+			full_columns[column-1] = full_columns[column-1]-1; //Γ…Γ°Γ―Γ¬Γ¥Γ­Γ§ Γ΅Γ¤Γ¥Γ©Γ΅ Γ¨Γ¥Γ³Γ§ Γ³Γ΄Γ§Γ­ Γ³Γ΄ΓµΓ«Γ§ Γ°Γ―Γµ Γ¥Γ°Γ©Γ«Γ¥Γ·Γ΄Γ§ΓªΓ¥
 		}
 		else
 		{
 			do {
 			System.out.print(player_2+ "(" +chip_player_2+ ") , your turn. Select column: ");
 			next_player = 1;
-			column = keyboard.nextInt(); //Επιλογη στυλης
-			}while(column<1 || column>columns || full_columns[column-1]<0); //Ελεγχος για σωστη επιλογη θεσης
-			Game[full_columns[column-1]][column-1] = chip_player_2; //Εισαγωγη Μαρκας
-			full_columns[column-1] = full_columns[column-1]-1; //Επομενη αδεια θεση στην στυλη που επιλεχτηκε
+			column = keyboard.nextInt(); //Γ…Γ°Γ©Γ«Γ―Γ£Γ§ Γ³Γ΄ΓµΓ«Γ§Γ²
+			}while(column<1 || column>columns || full_columns[column-1]<0); //Γ…Γ«Γ¥Γ£Γ·Γ―Γ² Γ£Γ©Γ΅ Γ³ΓΉΓ³Γ΄Γ§ Γ¥Γ°Γ©Γ«Γ―Γ£Γ§ Γ¨Γ¥Γ³Γ§Γ²
+			Game[full_columns[column-1]][column-1] = chip_player_2; //Γ…Γ©Γ³Γ΅Γ£ΓΉΓ£Γ§ ΓΓ΅Γ±ΓªΓ΅Γ²
+			full_columns[column-1] = full_columns[column-1]-1; //Γ…Γ°Γ―Γ¬Γ¥Γ­Γ§ Γ΅Γ¤Γ¥Γ©Γ΅ Γ¨Γ¥Γ³Γ§ Γ³Γ΄Γ§Γ­ Γ³Γ΄ΓµΓ«Γ§ Γ°Γ―Γµ Γ¥Γ°Γ©Γ«Γ¥Γ·Γ΄Γ§ΓªΓ¥
 		}
-		//Εμφανιση Παιχνιδιου
+		//Γ…Γ¬Γ¶Γ΅Γ­Γ©Γ³Γ§ ΓΓ΅Γ©Γ·Γ­Γ©Γ¤Γ©Γ―Γµ
 		PrintGame.Print_Game(Game, rows, columns);
 				
 				
 		
-		//ΣΥΝΕΧΕΙΑ ΠΑΙΧΝΙΔΟΥ
+		//Γ“Γ•ΓΓ…Γ—Γ…Γ‰Γ ΓΓΓ‰Γ—ΓΓ‰Γ„ΓΓ•
 				while (true)
 				{
-					//Ελεγχος για νικητη
+					//Γ…Γ«Γ¥Γ£Γ·Γ―Γ² Γ£Γ©Γ΅ Γ­Γ©ΓªΓ§Γ΄Γ§
 					stop = CheckGame.ChechForWinner(Game, rows, columns, chip_player_1, player_1, chip_player_2, player_2);
 					if (stop==true)
 						break;
-					//Ελεγχος για Ισοπαλια
+					//Γ…Γ«Γ¥Γ£Γ·Γ―Γ² Γ£Γ©Γ΅ Γ‰Γ³Γ―Γ°Γ΅Γ«Γ©Γ΅
 					stop = CheckGame.CheckForDraw(columns, full_columns);
 					if (stop==true)
 						break;
 					
-					//Εισαγωγη Μαρκας με τον ιδιο τροπο οπως στην αρχη
+					//Γ…Γ©Γ³Γ΅Γ£ΓΉΓ£Γ§ ΓΓ΅Γ±ΓªΓ΅Γ² Γ¬Γ¥ Γ΄Γ―Γ­ Γ©Γ¤Γ©Γ― Γ΄Γ±Γ―Γ°Γ― Γ―Γ°ΓΉΓ² Γ³Γ΄Γ§Γ­ Γ΅Γ±Γ·Γ§
 					next_player++;
 					if (next_player%2==0)
 					{
 						do {
 						System.out.print(player_1+ "(" +chip_player_1+ ") , your turn. Select column: ");
 						column = keyboard.nextInt();
-						}while(column<1 || column>columns || full_columns[column-1]<0); //Ελεγχος για σωστη επιλογη θεσης
+						}while(column<1 || column>columns || full_columns[column-1]<0); //Γ…Γ«Γ¥Γ£Γ·Γ―Γ² Γ£Γ©Γ΅ Γ³ΓΉΓ³Γ΄Γ§ Γ¥Γ°Γ©Γ«Γ―Γ£Γ§ Γ¨Γ¥Γ³Γ§Γ²
 						Game[full_columns[column-1]][column-1] = chip_player_1;
 						full_columns[column-1] = full_columns[column-1]-1;	
 					}
@@ -121,12 +122,12 @@ public class Main {
 						do {
 						System.out.print(player_2+ "(" +chip_player_2+ ") , your turn. Select column: ");
 						column = keyboard.nextInt();
-						}while(column<1 || column>columns || full_columns[column-1]<0); //Ελεγχος για σωστη επιλογη θεσης
+						}while(column<1 || column>columns || full_columns[column-1]<0); //Γ…Γ«Γ¥Γ£Γ·Γ―Γ² Γ£Γ©Γ΅ Γ³ΓΉΓ³Γ΄Γ§ Γ¥Γ°Γ©Γ«Γ―Γ£Γ§ Γ¨Γ¥Γ³Γ§Γ²
 						Game[full_columns[column-1]][column-1] = chip_player_2;
 						full_columns[column-1] = full_columns[column-1]-1;
 					}
 					
-					//Εμφανιση Παιχνιδιου
+					//Γ…Γ¬Γ¶Γ΅Γ­Γ©Γ³Γ§ ΓΓ΅Γ©Γ·Γ­Γ©Γ¤Γ©Γ―Γµ
 					PrintGame.Print_Game(Game, rows, columns);
 				}
 				keyboard.close();
